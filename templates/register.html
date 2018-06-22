@@ -1,0 +1,51 @@
+<div class='loginPage' layout='row' layout-align='center center'>
+  <md-whiteframe class='md-whiteframe-5dp registerform' layout='column' layout-align='center center' flex-gt-md='35' flex-md='60' flex-sm='80' flex-xs='90'>
+    <div layout='column' layout-align='center center'>
+      <img class="login-image" src="assets/keep.png">
+      <form name='register' class='form'>
+        <md-input-container class='md-block login-input'>
+          <label>Name</label>
+          <md-icon md-svg-src="bower_components/material-design-icons/action/svg/production/ic_account_circle_24px.svg" class="name"></md-icon>
+          <input type="text" name='name' ng-model='user.name' ng-required="true">
+          <div ng-messages="register.name.$error" ng-show='register.name.$invalid && register.name.$touched'>
+            <div ng-message="required" ng-show='register.name.$error.required'>
+              Name field is Required.
+            </div>
+          </div>
+        </md-input-container>
+        <md-input-container class='md-block login-input'>
+          <label>Username</label>
+          <md-icon md-svg-src="bower_components/material-design-icons/action/svg/production/ic_account_circle_24px.svg" class="name"></md-icon>
+          <input type="email" name='email' ng-model='user.email' ng-required="true" ng-pattern='/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/'>
+          <div ng-messages="register.email.$error" ng-show='register.email.$invalid && register.email.$touched'>
+            <div ng-message="required" ng-show='register.email.$error.required'>
+              Email field is Required.
+            </div>
+            <div ng-message="pattern" ng-show='register.email.$error.pattern'>
+              Invalid Email address.
+            </div>
+          </div>
+        </md-input-container>
+        <md-input-container class='md-block login-input'>
+          <label>Password</label>
+          <md-icon md-svg-src="bower_components/material-design-icons/action/svg/production/ic_lock_24px.svg" class="name"></md-icon>
+          <input type="password" name='pass' ng-model='user.password' ng-required="true">
+          <div ng-messages="register.pass.$error" ng-show='register.pass.$invalid && register.pass.$touched'>
+            <div ng-message="required" ng-show='register.pass.$error.required'>
+              Password field is Required.
+            </div>
+          </div>
+        </md-input-container>
+        <md-input-container class='md-block login-input'>
+          <label>Phone</label>
+          <md-icon md-svg-src="bower_components/material-design-icons/action/svg/production/ic_account_circle_24px.svg" class="name"></md-icon>
+          <input type="tel" name='phone' ng-model='user.mobile' ng-required="true" ng-pattern='/^[6-9]\d{9}$/'>
+          <div ng-messages="register.phone.$error" ng-show='register.phone.$invalid && register.phone.$touched'>
+            <div ng-message="pattern" ng-show='register.phone.$error.pattern'>### ### #### - Please enter a valid phone number.</div>
+          </div>
+        </md-input-container>
+        <md-button class="md-raised md-accent" style='width:100%' ng-disabled='register.$invalid' ng-click="registerForm()">SIGN UP</md-button>
+      </form>
+    </div>
+  </md-whiteframe>
+</div>

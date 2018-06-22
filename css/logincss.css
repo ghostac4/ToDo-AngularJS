@@ -1,0 +1,25 @@
+.loginPage{
+  height: 100%;
+  background-color: #f4b400;
+}
+.loginform{
+  background-color: white;
+  height: 400px;
+}
+.registerform{
+  background-color: white;
+  height: 500px;
+}
+.login-image{
+  width:20%;
+  height: 20%;
+}
+.login-input{
+  width:100%;
+}
+.form-link{
+  text-decoration: none;
+}
+.link-text{
+  font-size: 0.9em;
+}
