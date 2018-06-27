@@ -1,0 +1,28 @@
+<div>
+  <md-toolbar class="primary" id='toolbar'>
+    <div class="md-toolbar-tools">
+      <md-button class="md-icon-button" aria-label="sidenav">
+        <md-icon md-svg-icon="bower_components/material-design-icons/navigation/svg/production/ic_menu_24px.svg"
+        ng-click="toggle()"></md-icon>
+      </md-button>
+
+      <h2 flex md-truncate><b>Google</b> Keep</h2>
+
+      <div flex class="search-box" layout="row" layout-align="space-around center" flex-gt-md="55">
+        <md-icon md-svg-icon="bower_components/material-design-icons/action/svg/production/ic_search_24px.svg"></md-icon>
+        <input class="search-input" type="text" placeholder="Search">
+      </div>
+      <div flex layout="row" layout-align="space-around center" flex-gt-md="25">
+        <div flex-gt-md="40" layout="row" layout-align="space-around center" style="padding-left:25px;padding-right:25px;">
+          <md-icon md-svg-icon="bower_components/material-design-icons/navigation/svg/production/ic_refresh_24px.svg"></md-icon>
+          <md-icon md-svg-icon="bower_components/material-design-icons/action/svg/production/ic_view_agenda_24px.svg"></md-icon>
+        </div>
+        <div flex-gt-md="60" layout="row" layout-align="space-around center" style="padding-left:25px;padding-right:25px;">
+          <md-icon md-svg-icon="bower_components/material-design-icons/navigation/svg/production/ic_apps_24px.svg"></md-icon>
+          <md-icon md-svg-icon="bower_components/material-design-icons/social/svg/production/ic_notifications_24px.svg"></md-icon>
+          <img ng-src="assets/profile_image.jpeg" class="avatar" alt="profile image">
+        </div>
+      </div>
+    </div>
+  </md-toolbar>
+</div>

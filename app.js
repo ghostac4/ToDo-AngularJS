@@ -1,4 +1,4 @@
-var app = angular.module('noteApp', ['ui.router', 'ngMaterial', 'ngAnimate', 'ngMessages']);
+var app = angular.module('noteApp', ['ui.router', 'ngMaterial', 'ngAnimate', 'ngMessages',"content-editable"]);
 
 app.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider) {
 
@@ -30,8 +30,18 @@ app.config(function($stateProvider, $urlRouterProvider, $mdThemingProvider) {
       controller: 'userController'
     })
     .state('forgotPassword',{
-      url: '/forgotPassword',
+      url: '/forgotpassword',
       templateUrl : 'templates/forgotPassword.html',
       controller: 'userController'
+    })
+    .state('home',{
+      url: '/home',
+      templateUrl: 'templates/home.html',
+      controller: 'noteController'
+    })
+    .state('home.notes',{
+      url: '/notes',
+      templateUrl : 'templates/notes.html',
+      controller: 'noteController'
     });
 });

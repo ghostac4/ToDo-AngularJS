@@ -1,7 +1,7 @@
 app.controller('userController', function($scope,userService) {
   $scope.loginData = {
     email: "",
-    pass: ""
+    password: ""
   };
 
   $scope.user = {
@@ -16,7 +16,8 @@ app.controller('userController', function($scope,userService) {
   }
 
   $scope.login = function() {
-    console.log($scope.loginData);
+    console.log(angular.toJson($scope.loginData));
+    userService.login($scope.loginData);
   };
 
   $scope.registerForm = function() {

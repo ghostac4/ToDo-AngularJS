@@ -6,7 +6,7 @@
         <md-input-container class='md-block login-input'>
           <label>Username</label>
           <md-icon md-svg-src="bower_components/material-design-icons/action/svg/production/ic_account_circle_24px.svg" class="name"></md-icon>
-          <input type="email" name='email' ng-model='login.email' ng-required="true" ng-pattern='/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/'>
+          <input type="email" name='email' ng-model='loginData.email' ng-required="true" ng-pattern='/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/'>
           <div ng-messages="loginForm.email.$error" ng-show='loginForm.email.$invalid && loginForm.email.$touched'>
             <div ng-message="required" ng-show='loginForm.email.$error.required'>
               Email field is Required.
@@ -19,7 +19,7 @@
         <md-input-container class='md-block login-input'>
           <label>Password</label>
           <md-icon md-svg-src="bower_components/material-design-icons/action/svg/production/ic_lock_24px.svg" class="name"></md-icon>
-          <input type="password" name='pass' ng-model='login.pass' ng-required="true">
+          <input type="password" name='pass' ng-model='loginData.password' ng-required="true">
           <div ng-messages="loginForm.pass.$error" ng-show='loginForm.pass.$invalid && loginForm.pass.$touched'>
             <div ng-message="required" ng-show='loginForm.pass.$error.required'>
               Password field is Required.

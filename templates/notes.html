@@ -1,0 +1,154 @@
+<div id="dashboard" layout='column' layout-align="start center" ng-cloak>
+  <div class="middle-container" layout='column' layout-align="start center">
+
+    <div class="take-note-container" style="background-color:{{initialNote.color}};">
+      <div class='md-whiteframe-3dp' layout="column">
+        <div layout='row' ng-show="takeNoteStatus">
+          <div class="intial-text after-click" contenteditable data-placeholder="Title" ng-model="initialNote.title"></div>
+          <md-button aria-label="color menu" class="md-icon-button" ng-click="selectPinned($event)">
+          <md-icon class="small-icons" md-svg-icon="assets/pin.svg" ngStyle="initialNote.isPinned ? {color:gray}:{color:currentColor}"></md-icon>
+        </md-button>
+        </div>
+        <div layout="row">
+          <div class="intial-text" contenteditable ng-focus='changeTakeNoteStatus(true)' data-placeholder="Take a note..." ng-model="initialNote.body"></div>
+          <md-icon ng-show="!takeNoteStatus" md-svg-icon="bower_components/material-design-icons/editor/svg/production/ic_format_list_bulleted_24px.svg"></md-icon>
+          <md-icon ng-show="!takeNoteStatus" md-svg-icon="bower_components/material-design-icons/editor/svg/production/ic_insert_photo_24px.svg"></md-icon>
+        </div>
+        <div layout='row' layout-align="space-between center" ng-show="takeNoteStatus">
+          <div class='intial-text-options' layout="row" layout-align="space-around center">
+            <md-icon class="small-icons" md-svg-icon="assets/reminders.svg"></md-icon>
+            <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/social/svg/production/ic_person_add_24px.svg"></md-icon>
+
+            <md-menu md-offset="0 -7">
+              <md-button aria-label="color menu" class="md-icon-button" ng-click="$mdMenu.open($event)">
+                <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/image/svg/production/ic_color_lens_24px.svg"></md-icon>
+              </md-button>
+              <md-menu-content width="3">
+                <md-menu-item class="color-panel" ng-repeat="color in colors" layout-align="space-around center">
+                  <div ng-click="selectColor(singleColor)" class="color-box" ng-repeat="singleColor in color" style="background-color:{{singleColor}};">
+                  </div>
+                </md-menu-item>
+              </md-menu-content>
+            </md-menu>
+
+            <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/editor/svg/production/ic_insert_photo_24px.svg"></md-icon>
+            <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/content/svg/production/ic_archive_24px.svg"></md-icon>
+            <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/navigation/svg/production/ic_more_vert_24px.svg"></md-icon>
+            <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/navigation/svg/production/ic_arrow_back_24px.svg"></md-icon>
+            <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/navigation/svg/production/ic_arrow_forward_24px.svg"></md-icon>
+          </div>
+          <div>
+            <md-button ng-click="takeNote()">Close</md-button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-container" layout="row" layout="space-between center" layout-wrap>
+
+      <div ng-show="isNotePinned">
+        <div layout="column">
+          <md-subheader class="md-no-sticky">Pinned</md-subheader>
+          <div layout="row" layout="space-between center" layout-wrap>
+            <md-card ng-repeat="note in notes | filter:{isPinned:true}" id="note{{note.noteId}}" class="note" style="background-color:{{note.color}};" ng-mouseenter="showIcons($event,true,note.noteId)" ng-mouseleave="showIcons($event,false,note.noteId)">
+              <div layout="column">
+                <div ng-show='false'>
+                  <p>DemoImage</p>
+                </div>
+                <div style="padding-right:15px;padding-left:15px;">
+                  <p class="note-title">{{note.title}}</p>
+                </div>
+                <div style="padding-right:15px;padding-left:15px;">
+                  <p class="note-description">{{note.body}}</p>
+                </div>
+                <div ng-show='false'>
+
+                </div>
+              </div>
+              <div id="{{note.noteId}}" class="note-options" layout="column" layout-align="space-between stretch">
+                <div layout="row" layout-align="end center">
+                  <md-icon class="small-icons" style="margin:0;" md-svg-icon="assets/pin.svg"></md-icon>
+                </div>
+                <div layout="row" layout-align="space-around center">
+                  <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/social/svg/production/ic_person_add_24px.svg"></md-icon>
+                  <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/image/svg/production/ic_color_lens_24px.svg"></md-icon>
+                  <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/editor/svg/production/ic_insert_photo_24px.svg"></md-icon>
+                  <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/content/svg/production/ic_archive_24px.svg"></md-icon>
+                  <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/navigation/svg/production/ic_more_vert_24px.svg"></md-icon>
+                </div>
+              </div>
+            </md-card>
+          </div>
+
+          <md-subheader class="md-no-sticky">Others</md-subheader>
+          <div layout="row" layout="space-between center" layout-wrap>
+            <md-card ng-repeat="note in notes | filter:{isPinned:false}" id="note{{note.noteId}}" class="note" style="background-color:{{note.color}};" ng-mouseenter="showIcons($event,true,note.noteId)" ng-mouseleave="showIcons($event,false,note.noteId)">
+              <div layout="column">
+                <div ng-show='false'>
+                  <p>DemoImage</p>
+                </div>
+                <div style="padding-right:15px;padding-left:15px;">
+                  <p class="note-title">{{note.title}}</p>
+                </div>
+                <div style="padding-right:15px;padding-left:15px;">
+                  <p class="note-description">{{note.body}}</p>
+                </div>
+                <div ng-show='false'>
+
+                </div>
+              </div>
+              <div id="{{note.noteId}}" class="note-options" layout="column" layout-align="space-between stretch">
+                <div layout="row" layout-align="end center">
+                  <md-icon class="small-icons" style="margin:0;" md-svg-icon="assets/pin.svg"></md-icon>
+                </div>
+                <div layout="row" layout-align="space-around center">
+                  <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/social/svg/production/ic_person_add_24px.svg"></md-icon>
+                  <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/image/svg/production/ic_color_lens_24px.svg"></md-icon>
+                  <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/editor/svg/production/ic_insert_photo_24px.svg"></md-icon>
+                  <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/content/svg/production/ic_archive_24px.svg"></md-icon>
+                  <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/navigation/svg/production/ic_more_vert_24px.svg"></md-icon>
+                </div>
+              </div>
+            </md-card>
+          </div>
+
+        </div>
+
+
+      </div>
+
+      <div ng-hide="isNotePinned" layout="row" layout="space-between center" layout-wrap>
+        <md-card ng-repeat="note in notes" id="notep{{note.noteId}}" class="note" style="background-color:{{note.color}};" ng-mouseenter="showIcons($event,true,'p'+note.noteId)" ng-mouseleave="showIcons($event,false,'p'+note.noteId)">
+          <div layout="column">
+            <div ng-show='false'>
+              <p>DemoImage</p>
+            </div>
+            <div style="padding-right:15px;padding-left:15px;">
+              <p class="note-title">{{note.title}}</p>
+            </div>
+            <div style="padding-right:15px;padding-left:15px;">
+              <p class="note-description">{{note.body}}</p>
+            </div>
+            <div ng-show='false'>
+
+            </div>
+          </div>
+          <div id="p{{note.noteId}}" class="note-options" layout="column" layout-align="space-between stretch">
+            <div layout="row" layout-align="end center">
+              <md-icon class="small-icons" style="margin:0;" md-svg-icon="assets/pin.svg"></md-icon>
+            </div>
+            <div layout="row" layout-align="space-around center">
+              <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/social/svg/production/ic_person_add_24px.svg"></md-icon>
+              <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/image/svg/production/ic_color_lens_24px.svg"></md-icon>
+              <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/editor/svg/production/ic_insert_photo_24px.svg"></md-icon>
+              <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/content/svg/production/ic_archive_24px.svg"></md-icon>
+              <md-icon class="small-icons" md-svg-icon="bower_components/material-design-icons/navigation/svg/production/ic_more_vert_24px.svg"></md-icon>
+            </div>
+          </div>
+        </md-card>
+      </div>
+
+
+    </div>
+  </div>
+</div>

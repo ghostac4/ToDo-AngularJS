@@ -10,6 +10,7 @@
   <link rel="icon" href="assets/keep.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/logincss.css">
+  <link rel="stylesheet" href="/css/home.css">
 </head>
 
 <body ng-app="noteApp" class='pageContainer'>
@@ -24,16 +25,24 @@
 <script src="bower_components/angular-material/angular-material.min.js"></script>
 <script src="bower_components/angular-messages/angular-messages.min.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="bower_components/ng-content-editable/dist/ng-content-editable.min.js">
+
+</script>
 <script src="app.js"></script>
 
 <!--controller files -->
 <script type="text/javascript" src="controller/userController.js"></script>
+<script type="text/javascript" src="controller/noteController.js"></script>
 
 <!--directives files -->
+<script type="text/javascript" src="directives/toolbar.js"></script>
+<script type="text/javascript" src="directives/sidenav.js">
 
+</script>
 
 <!--services files -->
 <script type="text/javascript" src="services/userService.js"></script>
+<script type="text/javascript" src="services/noteService.js"></script>
 
 <!--filters files -->
 
