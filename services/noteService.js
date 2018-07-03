@@ -8,8 +8,9 @@ app.factory('noteService', function($http) {
         'Content-Type': "application/json",
         'userToken': localStorage.getItem('token')
       },
-      data: angular.toJson(userData)
+      data: angular.toJson(note)
     };
+    console.log(angular.toJson(note));
     $http(req).then(function successCallback(response) {
       console.log(response);
     }, function errorCallback(response) {
@@ -72,6 +73,7 @@ app.factory('noteService', function($http) {
   return {
     createNote: createNote,
     updateNote: updateNote,
+    deleteNote: deleteNote,
     getAllNotes: getAllNotes
   };
 });

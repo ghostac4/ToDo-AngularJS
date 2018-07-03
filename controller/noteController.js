@@ -15,6 +15,7 @@ app.controller('noteController', function($scope, $mdSidenav, $state,noteService
   $scope.notes =[];
   noteService.getAllNotes().then(function(data){
     $scope.notes = data;
+    checkIsPinned($scope.notes);
   });
 
   $scope.colors = [
@@ -65,15 +66,21 @@ app.controller('noteController', function($scope, $mdSidenav, $state,noteService
 
   function checkIsPinned(notes){
     for(var i=0;i<notes.length;i++){
-      if(notes[i].isPinned){
+      //console.log(notes[i].pinned);
+      if(notes[i].pinned){
         $scope.isNotePinned = true;
         break;
       }
     }
   }
 
-  $scope.selectColor = function(color){
-    $scope.initialNote.color = color;
+  $scope.selectColor = function(color,note){
+    if(note !== undefined){
+      note.color = color;
+      noteService.updateNote(note);
+    }else{
+      $scope.initialNote.color = color;
+    }
   };
 
   $scope.selectPinned = function(ev){

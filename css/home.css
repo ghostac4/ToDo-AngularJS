@@ -49,13 +49,15 @@ md-toolbar:not(.md-menu-toolbar) md-icon{
   font-size: 24px;
   font-weight: 300;
   line-height: 36px;
+  margin-top: 0px;
+  margin-bottom: 30px;
 }
 .note-options{
   transition: 0.5s ease;
   position: absolute;
   /* display: none; */
   visibility: hidden;
-  padding: 10px;
+  padding: 11px 11px 0px 11px;
   width:240px;
 }
 .intial-text{
